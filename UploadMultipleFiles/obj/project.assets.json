@@ -11849,11 +11849,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AkidaTawaka\\source\\repos\\UploadMultipleFiles\\UploadMultipleFiles\\UploadMultipleFiles.csproj",
+      "projectUniqueName": "C:\\Users\\AkidaTawaka\\GithubRepositories\\UploadMultipleFiles\\UploadMultipleFiles\\UploadMultipleFiles.csproj",
       "projectName": "UploadMultipleFiles",
-      "projectPath": "C:\\Users\\AkidaTawaka\\source\\repos\\UploadMultipleFiles\\UploadMultipleFiles\\UploadMultipleFiles.csproj",
+      "projectPath": "C:\\Users\\AkidaTawaka\\GithubRepositories\\UploadMultipleFiles\\UploadMultipleFiles\\UploadMultipleFiles.csproj",
       "packagesPath": "C:\\Users\\AkidaTawaka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AkidaTawaka\\source\\repos\\UploadMultipleFiles\\UploadMultipleFiles\\obj\\",
+      "outputPath": "C:\\Users\\AkidaTawaka\\GithubRepositories\\UploadMultipleFiles\\UploadMultipleFiles\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

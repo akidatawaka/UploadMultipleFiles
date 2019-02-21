@@ -24,27 +24,50 @@ namespace UploadMultipleFiles.Pages
 
         }
 
+        public string CreatePath(string folderName)
+        {
+            string _folderName = folderName;
+            string webRootPath = _hostingEnvironment.WebRootPath;
+            string newPath = Path.Combine(webRootPath, folderName);
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+            return newPath;
+        }
+
         public ActionResult OnPostUpload(List<IFormFile> files)
         {
             if (files != null && files.Count > 0)
             {
-                string folderName = "Picture";
-                string webRootPath = _hostingEnvironment.WebRootPath;
-                string newPath = Path.Combine(webRootPath, folderName);
-                if (!Directory.Exists(newPath))
-                {
-                    Directory.CreateDirectory(newPath);
-                }
+                string picturePath = CreatePath("Picture");
+                string anotherPath = CreatePath("NotPicture");
+
                 foreach (IFormFile item in files)
                 {
                     if (item.Length > 0)
                     {
                         string fileName = ContentDispositionHeaderValue.Parse(item.ContentDisposition).FileName.Trim('"');
-                        string fullPath = Path.Combine(newPath, fileName);
-                        using (var stream = new FileStream(fullPath, FileMode.Create))
+                        if (fileName.Contains(".jpg"))
                         {
-                            item.CopyTo(stream);
+                            string fullPath = Path.Combine(picturePath, fileName);
+                            using (var stream = new FileStream(fullPath, FileMode.Create))
+                            {
+                                item.CopyTo(stream);
+                            }
+                        } else
+                        {
+                            string fullPath = Path.Combine(anotherPath, fileName);
+                            using (var stream = new FileStream(fullPath, FileMode.Create))
+                            {
+                                item.CopyTo(stream);
+                            }
                         }
+                        //string fullPath = Path.Combine(newPath, fileName);
+                        //using (var stream = new FileStream(fullPath, FileMode.Create))
+                        //{
+                        //    item.CopyTo(stream);
+                        //}
                     }
                 }
                 return this.Content("Success");
